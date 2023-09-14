@@ -752,6 +752,27 @@
 
    	<div class="row contact-form">
 
+	   <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["contactName"];
+    $email = $_POST["contactEmail"];
+    $subject = $_POST["contactSubject"];
+    $message = $_POST["contactMessage"];
+    
+    $to = "arnaud.clv44@gmail.com";
+    $headers = "From: $email";
+    
+    mail($to, $subject, $message, $headers);
+    
+    // Réponse de réussite
+    echo "Votre message a été envoyé, merci !";
+} else {
+    // Le formulaire n'a pas été soumis
+    echo "Une erreur s'est produite. Veuillez réessayer.";
+}
+?>
+
+
    		<div class="col-twelve">
 
             <!-- form -->
